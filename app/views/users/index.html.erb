@@ -1,5 +1,15 @@
 <h1>All Users</h1>
 
-<%= @users.all.each do |user| %>
-<p><%= user.name %></p>
-<%= end %>
+<a href="<%= new_user_path %>">New User</a>
+
+<hr>
+
+<% User.all.each do |user| %>
+    <p><a href="<%= user_path(user.id) %>"><%= user.name %></a></p>
+    <a href="<%= user_path(user.id) %>" data-method="delete" data-confirm="Are you sure?">
+      Delete
+    </a>
+    <!-- Generates something like this: -->
+    <!-- <p><a href="/posts/5">Foo Bar</a></p> -->
+    <hr>
+<% end %>

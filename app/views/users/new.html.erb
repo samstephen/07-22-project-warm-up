@@ -1,2 +1,10 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+
+<h1>New User</h1>
+
+<!-- <form action="/users" method="post"> -->
+<%= form_tag users_path, :method => "post" do %>
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit">
+<% end %>
