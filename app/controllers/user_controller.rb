@@ -4,6 +4,9 @@ class UserController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to user_path
   end
 
   def show
@@ -20,6 +23,8 @@ class UserController < ApplicationController
 
   def create
   end
+
+  private
 
   def user_params
   end
