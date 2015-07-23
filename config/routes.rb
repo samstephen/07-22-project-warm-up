@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'main#home'
 
   resources :users, :tasks
 #    Prefix Verb   URI Pattern               Controller#Action
