@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :tasks
   resources :users, :tasks
 #    Prefix Verb   URI Pattern               Controller#Action
 #     users GET    /users(.:format)          users#index
