@@ -4,25 +4,25 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    get_user
     @user.destroy
     redirect_to users_path
   end
 
   def show
-    @user = User.find(params[:id])
+    get_user
     # Automatically load the view in /views/users/show.html.erb
   end
 
   # Get the form to edit a user.
   def edit
-    @user = User.find(params[:id])
+    get_user
     # Automatically load the view in /views/users/edit.html.erb
   end
 
   # Processes the edit-user form submission.
   def update
-    @user = User.find(params[:id])
+    get_user
 
     if @user.update_attributes(user_params)
       redirect_to users_path # Redirection needs a request path
@@ -41,7 +41,8 @@ class UsersController < ApplicationController
 
   # Processes the new-user form submission.
   def create
-    @user = User.new(user_params)
+    enc_pw = BCrypt::Password.create(params["users"]["password"])
+    @user = User.new({name: params["users"]["name"], email: params["users"]["email"], password: enc_pw})
 
     if @user.save
       redirect_to users_path # Redirection needs a request path
@@ -56,6 +57,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email, :password)
+    params["users"].permit(:name, :email, :password)
   end
+
+  def get_user
+    @user = User.find(params[:id])
+  end
+
 end

@@ -2,9 +2,9 @@
 
 <!-- <form action="/users/7" method="put"> -->
 <%= form_tag user_path(@user.id), :method => "put" do %>
-    <input type="text" name="name" placeholder="Name" value="<%= @user.name %>">
-    <input type="text" name="email" placeholder="Email" value="<%= @user.email %>">
-    <input type="password" name="password" placeholder="Password">
+    <input type="text" name="users[name]" placeholder="Name" value="<%= @user.name %>">
+    <input type="text" name="users[email]" placeholder="Email" value="<%= @user.email %>">
+    <input type="password" name="users[password]" placeholder="New Password">
 
     <input type="submit">
 <% end %>

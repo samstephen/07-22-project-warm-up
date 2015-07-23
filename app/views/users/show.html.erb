@@ -1,6 +1,24 @@
 
 <h1><%= @user.name %></h1>
-
+<h4>Email</h4>
 <p><%= @user.email %></p>
 
-<a href="<%= edit_user_path(@user.id) %>">Edit <%= @user.name %>.</a>
+<ul>
+  <li>
+    <a href="<%= edit_user_path(@user.id) %>">
+      Edit
+    </a>
+  </li>
+  <li>
+    <a href="<%= user_path(@user.id) %>" data-method="delete" data-confirm="Are you sure?">
+      Delete
+    </a>
+  </li>
+</ul>
+
+
+
+
+<h4>Tasks</h4>
+
+<a href="/users/<%= @user.id %>/tasks/new">Add New Task</a>

@@ -1,10 +1,14 @@
 
+<% @users.errors.full_messages.each do |user| %>
+    <p><%= user %></p>
+<% end %>
+
 <h1>New User</h1>
 
 <!-- <form action="/users" method="post"> -->
 <%= form_tag users_path, :method => "post" do %>
-    <input type="text" name="name" placeholder="Name">
-    <input type="text" name="email" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
+    <input type="text" name="users[name]" placeholder="Name">
+    <input type="text" name="users[email]" placeholder="Email">
+    <input type="password" name="users[password]" placeholder="Password">
     <input type="submit">
 <% end %>
